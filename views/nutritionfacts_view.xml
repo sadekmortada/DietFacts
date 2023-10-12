@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="nutritionfact_tree_view" model="ir.ui.view">
+        <field name="name">nutritionfact.tree</field>
+        <field name="model">nutritionfact.template</field>
+        <field name="arch" type="xml">
+            <tree><header></header>
+                <field name="nutrient_id"/>
+                <field name="value"/>
+                <field name="uom"/>
+                <field name="dailypercent"/>
+                <field name="product_id"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- <record id="meal_template_form_view" model="ir.ui.view">
+        <field name="name">meal.form</field>
+        <field name="model">meal.template</field>
+        <field name="arch" type="xml">
+            <form><group>
+                <field name="name" />
+                <field name="user_id"/>
+                <field name="notes"/>
+                <field name="meal_date"/>
+                <field name="totalcalories"/>
+                </group>
+                <notebook>
+                <page name="mealitems" string="Meal Items">
+                    <field name="item_ids" widget="one2many_list">
+                        <tree editable="bottom">
+                            <field name="item_id"/>
+                            <field name="calories"/>
+                            <field name="servings"/>
+                            <field name="notes"/>
+                        </tree>
+                    </field>
+                </page>
+                </notebook>
+            </form>
+        </field>
+    </record> -->
+    
+    <record id="nutritionfact_template_action" model="ir.actions.act_window">
+        <field name="name">Nutritions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">nutritionfact.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="nutritionfact_tree_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new product nutrition
+            </p>
+        </field>
+    </record>
+    
+    <menuitem id="menu_nutritionfact_template_action"
+        name="Nutrition Facts"
+        action="nutritionfact_template_action"
+        parent="sale.sale_menu_root"
+        sequence="33"/>
+        
+    <template id="nutritionfacts_view">
+    <t t-call="report.html.container">
+    <t t-foreach="docs" t-as="o">
+    <t t-call="report.external_layout">
+        <div class="page">
+            <div class="oe_structure"/>
+            <h1>Nutrition Report</h1>
+            <h2>Nutrient Name: <span t-field="o.nutrient_id.name"/></h2>
+            <div class="row">
+                <div class="col-xs-3">
+                    <span t-field="o.value"/>
+                </div>
+                <div class="col-xs-2">
+                    <span t-field="o.uom"/>
+                </div>
+                <div class="col-xs-3">
+                    <span t-field="o.dailypercent"/>
+                </div>
+            </div>
+            <h2>Product Name: <span t-field="o.product_id.name"/></h2>
+            <p>Calories: <span t-field="o.product_id.calories"/></p>
+            <p>Nutrition Score: <span t-field="o.product_id.nutritionscore"/></p>
+            <!-- <h3>Nutrition Details</h3>
+            <t t-foreach="o.nutrition_ids" t-as="line">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <span t-field="line.nutrient_id.name"/>
+                    </div>
+                    <div class="col-xs-2">
+                        <span t-field="line.value"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <span t-field="line.nutrient_id.uom_id.name"/>
+                    </div>
+                </div>
+            </t> -->
+        </div>
+    </t></t></t>    
+    </template>
+    
+    <data>
+    
+    <!-- <record id="nutrition_report" model="nutritionfact.template"
+    string="Nutritions"
+    report_type="qweb.pdf"
+    name="nutritionfacts_view"
+    file="rnutritionfacts_view"/> -->
+    
+    </data>
+        
+        
+        
+        
+        
+        
+        
+</odoo>

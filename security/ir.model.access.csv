@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_meal_template_user,meal.template.user,model_meal_template,base.group_user,1,0,0,0
+access_meal_template_manager,meal.template.manager,model_meal_template,base.group_system,1,1,1,1
+access_mealitem_template_user,mealitem.template.user,model_mealitem_template,base.group_user,1,0,0,0
+access_mealitem_template_manager,mealitem.template.manager,model_mealitem_template,base.group_system,1,1,1,1
+access_nutrient_template_user,nutrient.template.user,model_nutrient_template,base.group_user,1,0,0,0
+access_nutrient_template_manager,nutrient.template.manager,model_nutrient_template,base.group_system,1,1,1,1
+access_nutritionfact_template_user,nutritionfact.template.user,model_nutritionfact_template,base.group_user,1,0,0,0
+access_nutritionfact_template_manager,nutritionfact.template.manager,model_nutritionfact_template,base.group_system,1,1,1,1

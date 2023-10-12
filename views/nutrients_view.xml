@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="nutrient_tree_view" model="ir.ui.view">
+        <field name="name">nutrient.tree</field>
+        <field name="model">nutrient.template</field>
+        <field name="arch" type="xml">
+            <tree><header></header>
+                <field name="name"/>
+                <field name="uom_id"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- <record id="meal_template_form_view" model="ir.ui.view">
+        <field name="name">meal.form</field>
+        <field name="model">meal.template</field>
+        <field name="arch" type="xml">
+            <form><group>
+                <field name="name" />
+                <field name="user_id"/>
+                <field name="notes"/>
+                <field name="meal_date"/>
+                <field name="totalcalories"/>
+                </group>
+                <notebook>
+                <page name="mealitems" string="Meal Items">
+                    <field name="item_ids" widget="one2many_list">
+                        <tree editable="bottom">
+                            <field name="item_id"/>
+                            <field name="calories"/>
+                            <field name="servings"/>
+                            <field name="notes"/>
+                        </tree>
+                    </field>
+                </page>
+                </notebook>
+            </form>
+        </field>
+    </record> -->
+    
+    <record id="nutrient_template_action" model="ir.actions.act_window">
+        <field name="name">Nutrients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">nutrient.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="nutrient_tree_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new product nutrition
+            </p>
+        </field>
+    </record>
+    
+    <menuitem id="menu_nutrient_template_action"
+        name="Nutrients"
+        action="nutrient_template_action"
+        parent="sale.sale_menu_root"
+        sequence="32"/>
+</odoo>
